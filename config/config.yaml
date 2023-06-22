@@ -1,7 +1,7 @@
 USER:
-  START: [0, 8, 0, 0]
-  FINISH: [0, 0, 0, 0]
-  POP_SIZE: 200 
+  START: [0, 8, 0, 0]               # starting position of Dubins car on the 2D coordinate plane
+  FINISH: [0, 0, 0, 0]              # end position of Dubins car on the 2D coordinate plane
+  POP_SIZE: 200                     # population size of each generation
 
 GENETIC:
   NUM_GA_OPT_PARAMETERS: 10         # number of genetic algorithm optimization parameters [𝛾 𝛽]

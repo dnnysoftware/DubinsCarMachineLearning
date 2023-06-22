@@ -49,7 +49,7 @@ def main():
     if population_size <= config['CONSTRAINTS']['MAX_POP_SIZE']:
         init_pop = init_popluation(population_size, config)
         start_time = time.time()
-        opt_indv_state, opt_indv_control, times = parking.genetic_algorithm(init_pop, start_time, s0, sf_prime, plot)
+        opt_indv_state, opt_indv_control, times = parking.genetic_algorithm(init_pop, start_time, s0, sf_prime, plot, config)
         if opt_indv_state is not None and opt_indv_control is not None and times is not None:
             generate_controls_file(opt_indv_control)
             graph.graph_all(opt_indv_state, opt_indv_control, times)
