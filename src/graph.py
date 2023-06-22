@@ -22,3 +22,6 @@ def create_plot():
     ax.set_ylabel('y (ft)')
     ax.grid()
     return (fig, ax)
+
+def graph_all(opt_indv_state, opt_indv_control, times):
+    pass

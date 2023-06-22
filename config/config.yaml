@@ -4,12 +4,12 @@ USER:
   POP_SIZE: 200 
 
 GENETIC:
-  NUM_OPT_PARAMETERS: 10            # number of genetic algorithm optimization parameters [𝛾 𝛽]
+  NUM_GA_OPT_PARAMETERS: 10         # number of genetic algorithm optimization parameters [𝛾 𝛽]
   NUM_BITS_BIN: 7                   # numbers of binary bits per decimal value
   MUTATION_RATE: 0.5                # mutation rate of bit flip
 
 ODE:
-  CONTROL_RANGES:
+  CONTROLS:
     BETA_RANGE: [-5, 5]             # constraint range for Beta (acceleration ft/s^2)
     GAMMA_RANGE: [-0.524, 0.524]    # constraint range for Gamma (heading angle rate rad/s)
   T: 10                             # total time of parking which is 10s
