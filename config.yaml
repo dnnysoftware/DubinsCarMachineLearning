@@ -1,6 +1,7 @@
 USER:
   START: [0, 8, 0, 0]
   FINISH: [0, 0, 0, 0]
+  POP_SIZE: 200 
 
 GENETIC:
   NUM_OPT_PARAMETERS: 10            # number of genetic algorithm optimization parameters [𝛾 𝛽]
