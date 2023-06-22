@@ -1,0 +1,22 @@
+USER:
+  START: [0, 8, 0, 0]
+  FINISH: [0, 0, 0, 0]
+
+GENETIC:
+  NUM_OPT_PARAMETERS: 10            # number of genetic algorithm optimization parameters [𝛾 𝛽]
+  NUM_BITS_BIN: 7                   # numbers of binary bits per decimal value
+  MUTATION_RATE: 0.5                # mutation rate of bit flip
+
+ODE:
+  CONTROL_RANGES:
+    BETA_RANGE: [-5, 5]             # constraint range for Beta (acceleration ft/s^2)
+    GAMMA_RANGE: [-0.524, 0.524]    # constraint range for Gamma (heading angle rate rad/s)
+  T: 10                             # total time of parking which is 10s
+  DT: .1                            # delta t change of time for interpolation
+  K: 200                            # infeasibility constant
+
+CONSTRAINTS: 
+  J_TOL: 0.1                        # cost function tolerance for accepted derived final state
+  MAX_POP_SIZE: 500                 # max number of individuals in population
+  MAX_NUM_GEN: 1200                 # max number of generations
+  MAX_EXEC_TIME_SEC: 420            # max time is 7min so 420 seconds
