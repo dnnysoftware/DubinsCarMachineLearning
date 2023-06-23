@@ -61,7 +61,6 @@ At Runtime:
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 ### Built With
 
 Languages:
@@ -82,9 +81,37 @@ Libraries:
 <!-- GETTING STARTED -->
 ## Getting Started
 
+There are 2 ways to run this application: Either with a GUI through shell commands in `./run.sh` or without a GUI through Docker since matplotlib uses GUI OS's to display graphs. 
 
 ### Installation
 
-1.
+#### WITH GUI
+1. Clone the repo
+  ```sh
+  git clone https://github.com/dnnysoftware/BlackJackGame.git
+  ```
+2. Give file execute permissions to run.sh
+  ```sh
+  chmod +x run.sh
+  ```
+3. Run Program
+  * In root directory run by typing in CLI
+  ```sh
+  ./run.sh
+  ```
+
+#### WITHOUT GUI
+1. Clone the repo
+  ```sh
+  git clone https://github.com/dnnysoftware/BlackJackGame.git
+  ```
+2. Build the Docker Image
+  ```sh
+  docker build -t your-docker-username/your-project-name:your-version-number .
+  ```
+2. Run Docker Image
+  ```sh
+  docker run -it your-docker-username/your-project-name:your-version-number .
+  ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
