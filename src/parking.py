@@ -3,7 +3,14 @@ import numpy as np
 import random
 import time
 import ode
+import graph
 import generations
+
+
+def display_final_state(sf):
+    print('Final state values:')
+    print(f'x_f = {sf[0]}\ny_f = {sf[1]}\nalpha_f = {sf[2]}\nv_f = {sf[3]}')
+
 
 def calculate_time_passed(start_time):
     # Calculates time passed from start of reinforcement process
@@ -61,7 +68,7 @@ def genetic_algorithm(population, start_time, s0, sf_prime, plot, config):
         costs = np.zeros((len(population)), dtype=float)
         times, states, interpolated_individuals = [], [], []
         for i in range(0, len(dec_pop)):
-            cost, state_list, times_list, inter_indv = determine_cost_for_individual(dec_pop[i], s0, sf_prime)
+            cost, state_list, times_list, inter_indv = determine_cost_for_individual(dec_pop[i], s0, sf_prime, config)
             costs[i] = cost
             times = times_list
             states.append(state_list)
@@ -86,5 +93,13 @@ def genetic_algorithm(population, start_time, s0, sf_prime, plot, config):
         population = next_sep_pop
         x = states[min_cost_index[0]][:, 0]
         y = states[min_cost_index[0]][:, 1]
-
+        graph.plot_trajectory(x, y, plot)
+        ode.display_cost(generation, min_cost_index[1])
         generation += 1
+        for index, c in enumerate(costs):
+            if c <= config['CONSTRAINTS']['J_TOL']:
+                print()
+                display_final_state(states[index][len(states[index]) - 1])
+                plt.show()
+                return states[index], interpolated_individuals[index], times
+    return None, None, None

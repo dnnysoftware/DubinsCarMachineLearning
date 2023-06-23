@@ -7,6 +7,10 @@ def is_feasible(s):
     return False
 
 
+def display_cost(gen_idx, cost):
+    print(f'Generation {gen_idx} : J = {cost}')
+
+
 def calculate_fitness(cost):
     # calculates g(i) which is the fitness of J(i)
     return 1 / (cost + 1)
