@@ -1,7 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import random
 import time
 import ode
+import generations
 
 def calculate_time_passed(start_time):
     # Calculates time passed from start of reinforcement process
@@ -46,7 +48,7 @@ def determine_cost_for_individual(individual, s0, sf_prime, config):
     interpolated_individual = ode.interpolate_individual(individual, int(num_points))
     states, times, feasible = ode.calculate_eulers(config['ODE']['T'], config['ODE']['DT'], s0, interpolated_individual)
     if feasible:
-        return calculate_cost(states[len(states) - 1], sf_prime, config), states, times, interpolated_individual
+        return ode.calculate_cost(states[len(states) - 1], sf_prime, config), states, times, interpolated_individual
     return config['ODE']['K'], states, times, interpolated_individual
 
 
@@ -56,5 +58,33 @@ def genetic_algorithm(population, start_time, s0, sf_prime, plot, config):
     while True and calculate_time_passed(start_time) < config['CONSTRAINTS']['MAX_EXEC_TIME_SEC'] and \
         generation <= config['CONSTRAINTS']['MAX_NUM_GEN']:
         dec_pop = convert_binary_population_to_decimal(population, config)
-        costs = [determine_cost_for_individual(p, s0, sf_prime) for p in dec_pop]
+        costs = np.zeros((len(population)), dtype=float)
+        times, states, interpolated_individuals = [], [], []
+        for i in range(0, len(dec_pop)):
+            cost, state_list, times_list, inter_indv = determine_cost_for_individual(dec_pop[i], s0, sf_prime)
+            costs[i] = cost
+            times = times_list
+            states.append(state_list)
+            interpolated_individuals.append(inter_indv)
+        weights = [ode.calculate_fitness(c) for c in costs]
+        next_population = []
+        temp_combined_pop = generations.combine_gamma_beta(population, config)
+        # random crossover of population size - 2 children because 2 with best cost go to next generation
+        for _ in range(0, int(len(population) / 2) - 1):
+            parent1, parent2 = random.choices(temp_combined_pop[:len(temp_combined_pop)-2], weights[:len(weights)-2], k=2)
+
+            child1, child2 = generations.reproduce(parent1, parent2)
+
+            child1 = generations.mutate(child1, config)
+            child2 = generations.mutate(child2, config)
+            next_population.append(child1)
+            next_population.append(child2)
+        min_cost_index, second_min_cost_index = generations.determine_top_two_elitism(costs)
+        next_population.append(temp_combined_pop[second_min_cost_index[0]])
+        next_population.append(temp_combined_pop[min_cost_index[0]])
+        next_sep_pop = generations.separate_beta_gamma(next_population, config)
+        population = next_sep_pop
+        x = states[min_cost_index[0]][:, 0]
+        y = states[min_cost_index[0]][:, 1]
+
         generation += 1

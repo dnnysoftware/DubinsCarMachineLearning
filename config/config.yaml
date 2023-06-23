@@ -6,7 +6,7 @@ USER:
 GENETIC:
   NUM_GA_OPT_PARAMETERS: 10         # number of genetic algorithm optimization parameters [𝛾 𝛽]
   NUM_BITS_BIN: 7                   # numbers of binary bits per decimal value
-  MUTATION_RATE: 0.5                # mutation rate of bit flip
+  MUTATION_RATE: 0.5                # mutation rate of bit flip in percentage 0 - 100
 
 ODE:
   CONTROLS:

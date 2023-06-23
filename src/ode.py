@@ -7,6 +7,11 @@ def is_feasible(s):
     return False
 
 
+def calculate_fitness(cost):
+    # calculates g(i) which is the fitness of J(i)
+    return 1 / (cost + 1)
+
+
 def f(sk, uk):
     # Uses Eulers method to derive the next state
     # sk = [xk yk ak vk], uk = [yk Bk]
@@ -16,6 +21,14 @@ def f(sk, uk):
     vk_next = uk[1]
     sk_next = np.array([xk_next, yk_next, ak_next, vk_next])
     return sk_next
+
+
+def calculate_euclidean_distance(sf, sf_prime):
+    # calculates the cost (J) with feasible boundary conditions
+    return ((sf_prime[0] - sf[0])**2 
+            + (sf_prime[1] - sf[1])**2 
+            + (sf_prime[2] - sf[2])**2 
+            + (sf_prime[3] - sf[3])**2)**.5
 
 
 def interpolate_individual(i, num_points):
@@ -34,15 +47,6 @@ def calculate_cost(sf, sf_prime, config):
         return calculate_euclidean_distance(sf, sf_prime)
     else:
         return config['ODE']['K']
-    
-
-def calculate_euclidean_distance(sf, sf_prime):
-    # calculates the cost (J) with feasible boundary conditions
-    return ((sf_prime[0] - sf[0])**2 
-            + (sf_prime[1] - sf[1])**2 
-            + (sf_prime[2] - sf[2])**2 
-            + (sf_prime[3] - sf[3])**2)**.5
-
 
 
 def calculate_eulers(T, dt, s0, individual):
