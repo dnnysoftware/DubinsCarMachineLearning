@@ -1,6 +1,5 @@
 <a name="readme-top"></a>
 
-[![macOS](https://svgshare.com/i/ZjP.svg)](https://svgshare.com/i/ZjP.svg)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
@@ -30,7 +29,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![MY SECURITY CAMERA DEMO](img/demo-screenshot.png)
+![Dubin's Car Simulation Demo](img/demo-dubins.png)
 
 This Project is supposed to simulate Dubin's car which is used in fields of robotics and control theory in which the algorithm tries to find the path from a start position of the "car" to an end position in a parking lot while avoiding walls. This implementation uses reinforcement learning with genetic algorithms to find generations that approach the goal state and reduce cost doing so. Each generation has randomly generated control vectors and calcuates differential equations with respect to time intervals to find the most ideal next state.
 
