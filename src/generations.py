@@ -39,7 +39,7 @@ def reproduce(parent1, parent2):
 
 def mutate(individual, config):
     # Takes in i = [y_0 B_0 ... y_n B_n] string of bits (0, 1), iterates through
-    # them and flips the value depending if it fits the mutation boundary of 0.5% 
+    # them and flips the value depending if it fits the mutation boundary 
     mutated_individual = np.zeros((len(individual)), dtype=object)
     j = 0
     for p in individual:  
