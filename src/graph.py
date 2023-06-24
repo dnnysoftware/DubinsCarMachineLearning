@@ -3,8 +3,8 @@ import numpy as np
 from scipy.interpolate import CubicSpline
 
 def create_plot():
+    # creates the wall bounds and graphs the path
     fig, ax = plt.subplots(figsize=(8, 6))
-
     # wall bounds
     ax.plot([-15, -4], [3, 3], 'k-')
     ax.plot([-4, -4], [-1, 3], 'k-')

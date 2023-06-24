@@ -10,11 +10,13 @@ import parking
 FILE = "config/config.yaml"
 
 def parse_config():
+    # Reads the yaml configuration file
     with open(FILE, "r") as f:
         return yaml.safe_load(f)
     
 
 def generate_controls_file(individual):
+    # Takes control vector data and uploads to log
     controls_file = open(f"log/controls-{dt.datetime.now()}.dat", "w")
     for i in individual:
         controls_file.write(f'Gamma: {i[0]} Beta: {i[1]}\n')

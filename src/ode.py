@@ -54,6 +54,7 @@ def calculate_cost(sf, sf_prime, config):
 
 
 def calculate_eulers(T, dt, s0, individual):
+    # Calculates eulers method 
     s = np.zeros((int(T / dt) + 1, 4))
     s[0, :] = s0
     t = np.zeros((int(T / dt) + 1,))

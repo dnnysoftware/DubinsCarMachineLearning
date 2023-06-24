@@ -2,6 +2,7 @@ import numpy as np
 import random
 
 def combine_gamma_beta(population, config):
+    # Combines the gamma and beta binary strings into one binary string value 
     combined_pop = np.zeros((len(population), config['GENETIC']['NUM_GA_OPT_PARAMETERS']), dtype=object)
     for i, individual in enumerate(population):
         for j, para in enumerate(individual):
@@ -11,6 +12,7 @@ def combine_gamma_beta(population, config):
 
 
 def separate_beta_gamma(combined_pop, config):
+    # Separates the previously combined binary string back into gamma and beta values
     separated_pop = np.zeros((len(combined_pop), config['GENETIC']['NUM_GA_OPT_PARAMETERS'], 2), dtype=object)
     for i, individual in enumerate(combined_pop):
         for j, para in enumerate(individual):
@@ -59,6 +61,7 @@ def mutate(individual, config):
 
 
 def determine_top_two_elitism(costs):
+    # Gets the top 2 lowest cost control vectors
     costs = np.array(costs)
     sorted_indices = np.argsort(costs)
     two_smallest_indices = np.array(sorted_indices[:2], dtype=int)
