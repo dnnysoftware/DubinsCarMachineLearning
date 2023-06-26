@@ -88,7 +88,7 @@ There are 2 ways to run this application: Either with a GUI through shell comman
 #### WITH GUI
 1. Clone the repo
   ```sh
-  git clone https://github.com/dnnysoftware/BlackJackGame.git
+  git clone https://github.com/dnnysoftware/DubinsCarMachineLearning.git
   ```
 2. Give file execute permissions to run.sh
   ```sh
@@ -103,7 +103,7 @@ There are 2 ways to run this application: Either with a GUI through shell comman
 #### WITHOUT GUI
 1. Clone the repo
   ```sh
-  git clone https://github.com/dnnysoftware/BlackJackGame.git
+  git clone https://github.com/dnnysoftware/DubinsCarMachineLearning.git
   ```
 2. Build the Docker Image
   ```sh
